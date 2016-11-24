@@ -8,7 +8,10 @@
 <%@page import="kagoyume.HistoryData"%>
 <%
     JumsHelper jh = JumsHelper.getInstance();
-    CartDataBeans buyHistory = (CartDataBeans)request.getAttribute("buyHistory");
+    CartDataBeans buyHistory = null;
+    if(request.getAttribute("buyHistory") != null){
+        buyHistory = (CartDataBeans)request.getAttribute("buyHistory");
+    }
     HistoryData hd = (HistoryData)request.getAttribute("hd");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,7 +32,7 @@
     </head>
     <body>
         <header style="background-color:#eee">会員情報</header>
-        <h5>購入履歴</h5>
+        <h3>購入履歴</h3>
         <%if(request.getAttribute("historyEmpty") == null){%>
         <table border="3">
             <tr>
@@ -48,7 +51,7 @@
             <%}%>
         </table>
         <%}else{%>
-        <h3>これまで購入した商品はありません。</h3>
+        <h4>これまでに購入した商品はありません。</h4>
         <%}%>
         <br>
         <a href="Mydata">マイページへ</a><br>

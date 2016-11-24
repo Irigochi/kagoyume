@@ -44,7 +44,7 @@ public class Myhistory extends HttpServlet {
             
             UserDataDTO udd = (UserDataDTO)session.getAttribute("udd");
             HistoryData hd = UserDataDAO.getInstance().getHistory(udd.getID());
-            if(hd.getSize() < 0){
+            if(hd.getSize() < 1){
                 request.setAttribute("historyEmpty", 0);
             }else{
                 CartDataBeans buyHistory = new CartDataBeans();
